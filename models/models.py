@@ -29,7 +29,7 @@ class Product:
         if self.check_quantity(quantity):
             self.quantity -= quantity
         else:
-            raise NotImplementedError
+            raise ValueError
 
     def __hash__(self):
         return hash(self.name + self.description)
@@ -90,10 +90,7 @@ class Cart:
         Учтите, что товаров может не хватать на складе.
         В этом случае нужно выбросить исключение ValueError
         """
-        for product in self.products:
-            if self.products[product] > product.quantity:
-                raise ValueError
-            else:
-                product.quantity -= self.products[product]
-
+        for product, quantity in self.products.items():
+            product.buy(quantity)
+        self.clear()
 

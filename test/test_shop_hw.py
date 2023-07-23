@@ -74,6 +74,11 @@ class TestCart:
         cart.remove_product(product, 15)
         assert product not in cart.products
 
+    def test_remove_from_cart_more_products(self, product, cart):
+        cart.add_product(product, 10)
+        cart.remove_product(product, 15)
+        assert product not in cart.products
+
     def test_remove_part_from_cart(self, product, cart):
         cart.add_product(product, 15)
         cart.remove_product(product, 1)
@@ -98,3 +103,4 @@ class TestCart:
         cart.add_product(product, 1001)
         with pytest.raises(ValueError):
             cart.buy()
+
