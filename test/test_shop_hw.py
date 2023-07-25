@@ -47,7 +47,7 @@ class TestProducts:
         # TODO напишите проверки на метод buy,
         #  которые ожидают ошибку ValueError при попытке купить больше, чем есть в наличии
         with pytest.raises(ValueError):
-            assert product.buy(product.quantity + 1) is ValueError, 'failed buy all'
+            product.buy(product.quantity + 1), 'failed buy all'
 
 
 class TestCart:
